@@ -29,8 +29,8 @@ fetch(GEOJSON_URL)
         // Only style points; leave polygons unstyled
         if (feature.geometry.type === "Point") {
           return L.circleMarker(latlng, {
-            radius: 6,
-            fillColor: "#1f78b4",
+            radius: 7,
+            fillColor: "#db1b81ff",
             color: "#000",
             weight: 1,
             opacity: 1,
