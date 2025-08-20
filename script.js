@@ -51,7 +51,7 @@ var waterIcon = new L.Icon({
         //   popup += "<img src='" + feature.properties["Attach a photo (optional)"] + "' alt='fountain photo' width='200'><br>";
         //   }
         if (feature.properties["Add your name if you'd like credit (optional)"]) {
-          popup += "<b>Submitted by: </b> " + feature.properties["Add your name if you'd like credit (optional)"] + "<br>";
+          popup += "<br><b>Submitted by: </b> " + feature.properties["Add your name if you'd like credit (optional)"] + "<br>";
           }
         // Markers
         return L.marker(latlng, { icon: waterIcon }).bindPopup(popup);
