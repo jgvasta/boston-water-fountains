@@ -8,3 +8,18 @@ html, body {
   width: 100%;
   background: none
 }
+
+@media (max-width: 600px) {
+  header {
+    font-size: 18 px;
+    padding: 10px 15px;
+  }
+}
+
+#map {
+  height: calc(100vh-60px)
+}
+
+header p {
+  font-size: 12px
+}
