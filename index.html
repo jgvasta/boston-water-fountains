@@ -3,17 +3,63 @@
 <head>
   <meta charset="utf-8">
   <title>Boston's Public Water Fountains</title>
-  
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-  
   <link rel="stylesheet" href="style.css"/>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Header styling */
+    header {
+      background-color: #0072bb;
+      color: white;
+      padding: 15px 20px;
+      text-align: left;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 24px;
+      font-weight: bold
+    }
+
+    header p {
+      margin: 5px 0 0 0;
+      font-size: 14px
+    }
+
+    /* Map container fills remaining viewport below header */
+    #map {
+      width: 100%;
+      height: calc(100vh - 70px); /* subtract header height */
+    }
+
+    header a {
+      color: #ffffff;
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
+
+  <!-- Header -->
+  <header>
+    <h1>Boston's Public Water Fountains</h1>
+    <p><a href="https://docs.google.com/forms/d/e/1FAIpQLSfR5_GpnKO8l9ATUbgOTsqPUq6hhHEZEJIzD-ymUQNinivDww/viewform?usp=header" target="_blank">
+      Click here to submit a fountain location
+    </a></p>
+  </header>
+
+  <!-- Map -->
   <div id="map"></div>
 
-<!-- Leaflet JS -->
+  <!-- Leaflet JS -->
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-<!-- Call js script -->
+  <!-- Call JS script -->
   <script src="script.js"></script>
+
 </body>
 </html>

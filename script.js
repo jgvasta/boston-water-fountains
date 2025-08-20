@@ -15,6 +15,7 @@ const keyMap = {
   "Add your name if you'd like credit (optional)": "submitterName"
 };
 
+/*
 // Add Stadia_StamenTerrain tiles
 L.tileLayer('https://tiles.stadiamaps.com/tiles/stamen_terrain/{z}/{x}/{y}{r}.{ext}', {
 	minZoom: 0,
@@ -22,7 +23,21 @@ L.tileLayer('https://tiles.stadiamaps.com/tiles/stamen_terrain/{z}/{x}/{y}{r}.{e
 	attribution: '&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://www.stamen.com/" target="_blank">Stamen Design</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
 	ext: 'png'
 }).addTo(map);
+*/
 
+// Add ArcGIS world topo map tiles
+L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}', {
+	attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ, TomTom, Intermap, iPC, USGS, FAO, NPS, NRCAN, GeoBase, Kadaster NL, Ordnance Survey, Esri Japan, METI, Esri China (Hong Kong), and the GIS User Community'
+}).addTo(map);
+
+/*
+L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.{ext}', {
+	minZoom: 0,
+	maxZoom: 20,
+	attribution: '&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+	ext: 'png'
+}).addTo(map);
+*/
 
 // Fetch GeoJSON data
 fetch(GEOJSON_URL)
@@ -32,7 +47,7 @@ fetch(GEOJSON_URL)
     
 // Create marker
 var waterIcon = new L.Icon({
-  iconUrl: 'droplet.png', // relative path to your PNG
+  iconUrl: 'water_circle.png', // relative path to your PNG
   shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png', // optional shadow
   iconSize: [41, 41],    // width, height of your icon
   iconAnchor: [12, 41],  // point of the icon that corresponds to the marker's location
