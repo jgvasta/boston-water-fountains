@@ -1,3 +1,5 @@
+console.log("script loaded");
+
 // Get geojson stream
 const GEOJSON_URL = "https://script.google.com/macros/s/AKfycbwaKTk--r3ZhxQBQSvNwGzz3HZRIy2N2HYBb3DN8zhLpX6LTlCdUqfwEtnfSJBy2lt8/exec";
 
@@ -7,63 +9,33 @@ const map = L.map('map').setView([42.3601, -71.0589], 13);
 // Add OpenStreetMap tiles
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   maxZoom: 19,
-  attribution: '&copy; OpenStreetMap contributors'
+  attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
 
 // Fetch GeoJSON data
 fetch(GEOJSON_URL)
-  .then(response => {
-    if (!response.ok) throw new Error("Network response was not ok");
-    return response.json();
-  })
+  .then(response => response.json()) // Convert response to json
   .then(data => {
-    // Ensure GeoJSON has features
-    if (!data.features || data.features.length === 0) {
-      console.warn("GeoJSON data is empty");
-      return;
-    }
-
-    // Create a GeoJSON layer
+    console.log("GeoJSON data loaded:", data);
+    
+    // Add GeoJSON layer to map
     const geoJsonLayer = L.geoJSON(data, {
-      pointToLayer: function(feature, latlng) {
-        // Only style points; leave polygons unstyled
-        if (feature.geometry.type === "Point") {
-          return L.circleMarker(latlng, {
-            radius: 7,
-            fillColor: "#db1b81ff",
-            color: "#000",
-            weight: 1,
-            opacity: 1,
-            fillOpacity: 0.7
-          });
-        }
-        // For polygons/lines, just draw the outline with no fill
-        return L.geoJSON(feature, {
-          style: {
-            color: "#000",
-            weight: 1,
-            fillOpacity: 0
-          }
-        });
-      },
-      onEachFeature: function(feature, layer) {
-        // Only bind popup for points
-        if (feature.geometry.type === "Point") {
-          let popupContent = "";
-          for (let key in feature.properties) {
-            popupContent += `<strong>${key}:</strong> ${feature.properties[key]}<br>`;
-          }
-          layer.bindPopup(popupContent);
-        }
-      }
-    }).addTo(map);
+      pointToLayer: (feature, latlng) =>
+        L.circleMarker(latlng, {
+          radius: 5,
+          fillColor: "pink",
+          color: "black",
+          weight: 1,
+          opacity: 1,
+          fillOpacity: 0.8
+        }).bindPopup("<b>" + (feature.properties.name || "No name") + "</b>") // Display feature name in popup
+      }).addTo(map);
 
-    // Fit map to bounds of all points, if valid
+    // Fit map to bounds of all points
     if (geoJsonLayer.getBounds().isValid()) {
       map.fitBounds(geoJsonLayer.getBounds(), { padding: [50, 50] });
     }
-  }) // <-- Close the .then(data => { ... }) function
-  .catch(error => {
-    console.error("Error loading GeoJSON:", error);
-    // Default view already set at initialization
-  }); // <-- Close fetch() chain
+  })
+  .catch(err => console.error('Error loading GeoJSON:', err)); // Handle errors
+
+    

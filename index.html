@@ -1,25 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <title>Boston's Public Water Fountains</title>
+  
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-  <style>
-    #map { width: 100%; height: 600px; }
-    body, html { margin:0; padding:0; height:100%; }
-  </style>
+  
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
   <div id="map"></div>
 
+<!-- Leaflet JS -->
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-  <script>
-    const map = L.map('map').setView([42.3601, -71.0589], 13);
-
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 19,
-      attribution: '&copy; OpenStreetMap contributors'
-    }).addTo(map);
-  </script>
+<!-- Call js script -->
+  <script src="script.js"></script>
 </body>
 </html>
