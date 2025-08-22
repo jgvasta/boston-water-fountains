@@ -14,22 +14,31 @@
 
     /* Header styling */
     header {
-      background-color: #0072bb;
-      color: white;
-      padding: 15px 20px;
-      text-align: left;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      background-color: #0772bb;
+      height: 90px;           /* fixed header height */
+      display: flex;
+      align-items: center;    /* vertically center content */
+      padding: 0 10px;
     }
 
-    header h1 {
+    .header-content {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .logo {
+      height: 50px;
+      width: auto;
+      margin-bottom: 0px;
+      margin-top: 10px
+    }
+
+    .tagline a {
       margin: 0;
-      font-size: 24px;
-      font-weight: bold
-    }
-
-    header p {
-      margin: 5px 0 0 0;
-      font-size: 14px
+      color: white;
+      font-size: 14px;
+      text-decoration: underline;
     }
 
     /* Map container fills remaining viewport below header */
@@ -38,21 +47,22 @@
       height: calc(100vh - 70px); /* subtract header height */
     }
 
-    header a {
-      color: #ffffff;
-      text-decoration: underline;
-    }
   </style>
 </head>
 <body>
 
   <!-- Header -->
   <header>
-    <h1>Boston's Public Water Fountains</h1>
-    <p><a href="https://docs.google.com/forms/d/e/1FAIpQLSfR5_GpnKO8l9ATUbgOTsqPUq6hhHEZEJIzD-ymUQNinivDww/viewform?usp=header" target="_blank">
-      Click here to submit a fountain location
-    </a></p>
+    <div class="header-content">
+      <img src="public_bubblers_font_noshadow_nobg.png" class="logo" alt="Public Bubblers">
+      <p class="tagline">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfR5_GpnKOkoIbgOTsqPUq6hhHEZEJIzD-ymUQNinivDww/viewform?usp=header" target="_blank">
+          Click here to submit a fountain location
+        </a>
+      </p>
+    </div>
   </header>
+
 
   <!-- Map -->
   <div id="map"></div>
