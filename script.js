@@ -46,9 +46,9 @@ var waterIcon = new L.Icon({
         if (feature.properties["Any other description of the location or fountain that you'd like to include?"]) {
           popup += feature.properties["Any other description of the location or fountain that you'd like to include?"] + "<br>";
           }
-        // if (feature.properties["Attach a photo (optional)"]) {
-        //   popup += "<img src='" + feature.properties["Attach a photo (optional)"] + "' alt='fountain photo' width='200'><br>";
-        //   }
+        if (feature.properties["Attach a photo (optional)"]) {
+          popup += "<img src='" + feature.properties["Attach a photo (optional)"] + "' alt='fountain photo' width='200'><br>";
+          }
         if (feature.properties["Add your name if you'd like credit (optional)"]) {
           popup += "<br><b>Submitted by: </b> " + feature.properties["Add your name if you'd like credit (optional)"] + "<br>";
           }
